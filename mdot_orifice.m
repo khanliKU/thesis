@@ -1,0 +1,6 @@
+function mdot = mdot_orifice(p_i,p_o,gam,A,Tt,R)
+    M = M_orifice(p_i,p_o,gam)
+    mdot = A * B_to_Pa(p_i) / sqrt(Tt) * sqrt(gam/R) * M *...
+        (1 + (gam+1)/2 * M^2)^...
+        -((gam+1)/(2*(gam-1)));
+end
