@@ -28,8 +28,8 @@ if __name__ == "__main__":
             if skip:
                 continue
 
-            if "m2" in line: #Skip areas
-                line = line.replace("m2","m*m")
+            line = line.replace("m2","m*m")
+            line = line.replace("pi","PI")
             
             if "=" in line:
                 if "e-3" in line:

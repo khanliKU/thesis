@@ -2,44 +2,44 @@ goal_Cv,6,ul
 goal_Cd,0.61,ul
 goal_B,0,ul
 goal_r,0.00465*sqrt(goal_Cv/goal_Cd),m
-goal_A,pi * goal_r^2,m*m
+goal_A,PI * goal_r^2,m*m
 Cd_cylinder,0.5,ul
 main_orifice_r,2*0.001,m
 main_boss_t,2*0.001,m
 main_boss_inner_r,main_orifice_r + main_boss_t,m
-main_boss_A,pi*main_boss_inner_r^2,m*m
+main_boss_A,PI*main_boss_inner_r^2,m*m
 outlet_orifice_A,goal_A*sqrt(goal_Cd/Cd_cylinder) + main_boss_A,m*m
-outlet_orifice_r,sqrt(outlet_orifice_A/pi),m
+outlet_orifice_r,sqrt(outlet_orifice_A/PI),m
 outlet_entrance_A,outlet_orifice_A * 4,m*m
-outlet_entrance_r,sqrt(outlet_entrance_A/pi),m
+outlet_entrance_r,sqrt(outlet_entrance_A/PI),m
 outlet_boss_t,5*0.001,m
 outlet_boss_r,outlet_entrance_r + outlet_boss_t,m
-outlet_boss_A,pi*outlet_boss_r^2,m*m
+outlet_boss_A,PI*outlet_boss_r^2,m*m
 main_A,outlet_boss_A + outlet_entrance_A,m*m
-main_r,sqrt(main_A/pi),m
-main_high_pressure_A,pi * (main_r^2 - outlet_boss_r^2),m*m
+main_r,sqrt(main_A/PI),m
+main_high_pressure_A,PI * (main_r^2 - outlet_boss_r^2),m*m
 main_down_side_A,outlet_entrance_A,m*m
 main_low_pressure_A,(main_high_pressure_A + main_down_side_A)*1.00,m*m
-main_boss_out_r,sqrt(main_low_pressure_A/pi),m
+main_boss_out_r,sqrt(main_low_pressure_A/PI),m
 main_boss_t,3*0.001,m
 main_boss_inner_r,main_boss_out_r - main_boss_t,m
 main_t,10*0.001,m
-main_movement_range,outlet_entrance_A / (2 * pi * outlet_entrance_r),m
+main_movement_range,outlet_entrance_A / (2 * PI * outlet_entrance_r),m
 retainer_main_groove_depth,main_t + main_movement_range + 2*0.001,m
 retainer_main_groove_r,main_r,m
 retainer_t,4*0.001,m
 retainer_r,retainer_main_groove_r + retainer_t,m
 retainer_main_boss_groove_r,main_boss_out_r,m
-pilot_seal_r,main_boss_inner_r * 0.5,m
-pilot_seal_t,4*0.001,m
-pilot_stem_r,pilot_seal_r * 0.25,m
-pilot_steam_A,pilot_stem_r^2 * pi,m*m
-pilot_seal_A,pilot_seal_r^2 * pi,m*m
-pilot_movement_range,20*0.001,m
-main_boss_h,pilot_movement_range * 1.05,m
+PIlot_seal_r,main_boss_inner_r * 0.5,m
+PIlot_seal_t,4*0.001,m
+PIlot_stem_r,PIlot_seal_r * 0.25,m
+PIlot_steam_A,PIlot_stem_r^2 * PI,m*m
+PIlot_seal_A,PIlot_seal_r^2 * PI,m*m
+PIlot_movement_range,20*0.001,m
+main_boss_h,PIlot_movement_range * 1.05,m
 retainer_main_boss_groove_depth,main_boss_h + main_movement_range + 2*0.001,m
 retainer_total_h,retainer_main_boss_groove_depth + retainer_main_groove_depth + retainer_t,m
 inlet_retainer_groove_r,sqrt(outlet_entrance_r^2 + retainer_r^2),m
 inlet_t,8*0.001,m
 inlet_r,inlet_retainer_groove_r + inlet_t,m
-inlet_outlet_distance,outlet_entrance_A / (2 * pi * retainer_main_boss_groove_r),ul
+inlet_outlet_distance,outlet_entrance_A / (2 * PI * retainer_main_boss_groove_r),ul
