@@ -12,12 +12,12 @@ Cd_cylinder = 0.5
 %% Main
 
 main_orifice_r = 2e-3 %m
-main_boss_t = 2e-3 %m
-main_boss_inner_r = main_orifice_r + main_boss_t %m
-main_boss_A = pi*main_boss_inner_r^2 %m2
+main_tower_t = 2e-3 %m
+main_tower_r = main_orifice_r + main_tower_t %m
+main_tower_A = pi*main_tower_r^2 %m2
 %% Outlet
 
-outlet_orifice_A = goal_A*sqrt(goal_Cd/Cd_cylinder) + main_boss_A %m2
+outlet_orifice_A = goal_A*sqrt(goal_Cd/Cd_cylinder) + main_tower_A %m2
 outlet_orifice_r = sqrt(outlet_orifice_A/pi) %m
 outlet_entrance_A = outlet_orifice_A * 4 %m2
 outlet_entrance_r = sqrt(outlet_entrance_A/pi) %m

@@ -5,10 +5,10 @@ goal_r,0.00465*sqrt(goal_Cv/goal_Cd),m
 goal_A,PI * goal_r^2,m*m
 Cd_cylinder,0.5,ul
 main_orifice_r,2*0.001,m
-main_boss_t,2*0.001,m
-main_boss_inner_r,main_orifice_r + main_boss_t,m
-main_boss_A,PI*main_boss_inner_r^2,m*m
-outlet_orifice_A,goal_A*sqrt(goal_Cd/Cd_cylinder) + main_boss_A,m*m
+main_tower_t,2*0.001,m
+main_tower_r,main_orifice_r + main_tower_t,m
+main_tower_A,PI*main_tower_r^2,m*m
+outlet_orifice_A,goal_A*sqrt(goal_Cd/Cd_cylinder) + main_tower_A,m*m
 outlet_orifice_r,sqrt(outlet_orifice_A/PI),m
 outlet_entrance_A,outlet_orifice_A * 4,m*m
 outlet_entrance_r,sqrt(outlet_entrance_A/PI),m
