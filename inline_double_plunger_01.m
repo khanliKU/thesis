@@ -15,15 +15,20 @@ main_orifice_r = 2e-3 %m
 main_tower_t = 2e-3 %m
 main_tower_r = main_orifice_r + main_tower_t %m
 main_tower_A = pi*main_tower_r^2 %m2
+main_tower_h = 30e-3 %m
 %% Outlet
 
 outlet_orifice_A = goal_A*sqrt(goal_Cd/Cd_cylinder) + main_tower_A %m2
 outlet_orifice_r = sqrt(outlet_orifice_A/pi) %m
+outlet_orifice_h = 10e-3 %m
 outlet_entrance_A = outlet_orifice_A * 4 %m2
 outlet_entrance_r = sqrt(outlet_entrance_A/pi) %m
+outlet_entrance_h = 10e-3 %m
 outlet_boss_t = 5e-3 %m
 outlet_boss_r = outlet_entrance_r + outlet_boss_t %m
 outlet_boss_A = pi*outlet_boss_r^2 %m2
+outlet_boss_h = outlet_orifice_h + outlet_entrance_h %m
+outlet_t = 10e-3 %m
 %% Main
 
 main_A = outlet_boss_A + outlet_entrance_A %m2
@@ -99,11 +104,12 @@ pilot_movement_range = 20e-3 %m
 main_boss_h = pilot_movement_range * 1.05 %m
 %% Retainer
 
-retainer_main_boss_groove_depth = main_boss_h + main_movement_range + 2e-3 %m
+retainer_main_boss_groove_depth = main_movement_range + 2e-3 %m
 retainer_total_h = retainer_main_boss_groove_depth + retainer_main_groove_depth + retainer_t %m
 %% Inlet
 
 inlet_retainer_groove_r = sqrt(outlet_entrance_r^2 + retainer_r^2) %m
 inlet_t = 8e-3 %m
 inlet_r = inlet_retainer_groove_r + inlet_t %m
-inlet_outlet_distance = outlet_entrance_A / (2 * pi * retainer_main_boss_groove_r)
+inlet_outlet_distance = outlet_entrance_A / (2 * pi * retainer_main_boss_groove_r) %m
+inlet_h = 2 * inlet_outlet_distance + retainer_total_h + inlet_t %m

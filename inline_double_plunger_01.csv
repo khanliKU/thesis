@@ -8,13 +8,18 @@ main_orifice_r,2*0.001,m
 main_tower_t,2*0.001,m
 main_tower_r,main_orifice_r + main_tower_t,m
 main_tower_A,PI*main_tower_r^2,m*m
+main_tower_h,30*0.001,m
 outlet_orifice_A,goal_A*sqrt(goal_Cd/Cd_cylinder) + main_tower_A,m*m
 outlet_orifice_r,sqrt(outlet_orifice_A/PI),m
+outlet_orifice_h,10*0.001,m
 outlet_entrance_A,outlet_orifice_A * 4,m*m
 outlet_entrance_r,sqrt(outlet_entrance_A/PI),m
+outlet_entrance_h,10*0.001,m
 outlet_boss_t,5*0.001,m
 outlet_boss_r,outlet_entrance_r + outlet_boss_t,m
 outlet_boss_A,PI*outlet_boss_r^2,m*m
+outlet_boss_h,outlet_orifice_h + outlet_entrance_h,m
+outlet_t,10*0.001,m
 main_A,outlet_boss_A + outlet_entrance_A,m*m
 main_r,sqrt(main_A/PI),m
 main_high_pressure_A,PI * (main_r^2 - outlet_boss_r^2),m*m
@@ -37,9 +42,10 @@ PIlot_steam_A,PIlot_stem_r^2 * PI,m*m
 PIlot_seal_A,PIlot_seal_r^2 * PI,m*m
 PIlot_movement_range,20*0.001,m
 main_boss_h,PIlot_movement_range * 1.05,m
-retainer_main_boss_groove_depth,main_boss_h + main_movement_range + 2*0.001,m
+retainer_main_boss_groove_depth,main_movement_range + 2*0.001,m
 retainer_total_h,retainer_main_boss_groove_depth + retainer_main_groove_depth + retainer_t,m
 inlet_retainer_groove_r,sqrt(outlet_entrance_r^2 + retainer_r^2),m
 inlet_t,8*0.001,m
 inlet_r,inlet_retainer_groove_r + inlet_t,m
-inlet_outlet_distance,outlet_entrance_A / (2 * PI * retainer_main_boss_groove_r),ul
+inlet_outlet_distance,outlet_entrance_A / (2 * PI * retainer_main_boss_groove_r),m
+inlet_h,2 * inlet_outlet_distance + retainer_total_h + inlet_t,m
