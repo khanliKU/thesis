@@ -1,4 +1,4 @@
-function F = force_micro_hs_v(rel_perm, gap)
+function F = force_micro_hs_v(rel_perm, gap, N, I)
 %https://www.electrical4u.com/magnetic-reluctance/
 filename = 'design_params_ref.xlsx';
 [NUM,TXT,RAW] = xlsread(filename);
@@ -65,7 +65,7 @@ MR_valve_spool_ver = MR_surface_valve_spool_ver_l / (perm * MR_surface_valve_spo
 MR_valve_spool = MR_valve_spool_ver + MR_valve_spool_hor
 %Total
 MR_total = MR_valve_spool + MR_gap + MR_shell + MR_magnetic_bottom + MR_magnetic_top
-NI = 1000 * 0.75 % N: # of turns, I: current per turn
+NI = N * I % N: # of turns, I: current per turn
 flux = NI / MR_total
 F = flux^2 / (air_perm * MR_gap_hor_A)
 end
