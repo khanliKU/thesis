@@ -57,7 +57,7 @@ function [Fmag,N,wire_len,wire_R,sol_V,sol_P,L] = valve_magnetic_force(valve,gap
         MR_valve_spool_magnetic_bottom_hor + MR_shell_mag_bot_hor + MR_shell_mag_top_hor;
     R_per_km = 18.426905*valve.wire_area^-0.997135;
     wire_d = 2 * sqrt(valve.wire_area/pi);
-    coil_cross_section_A = (valve.coil_dout - valve.coil_din) * valve.coil_h; % mm2;
+    coil_cross_section_A = 0.5 * (valve.coil_dout - valve.coil_din) * valve.coil_h; % mm2;
     N = coil_cross_section_A / wire_d^2;
     wire_len = N * pi * (valve.coil_dout + valve.coil_din) * 1e-3;
     wire_R = wire_len * R_per_km * 1e-3;
