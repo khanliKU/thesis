@@ -1,4 +1,4 @@
-function [Fmag,N,wire_len,wire_R,sol_V,sol_P,L] = valve_magnetic_force(valve,gap,current)
+function [Fmag,N,wire_len,wire_R,sol_V,sol_P,L,MR_total] = valve_magnetic_force(valve,gap,current)
     air_perm = 1.25663753*1e-6;
     %Magnetic Top
     magnetic_top_boss_center_cylnder_r = 0.25 * (valve.magnetic_top_boss_dout + valve.magnetic_top_boss_din);
@@ -58,12 +58,17 @@ function [Fmag,N,wire_len,wire_R,sol_V,sol_P,L] = valve_magnetic_force(valve,gap
     R_per_km = 18.426905*valve.wire_area^-0.997135;
     wire_d = 2 * sqrt(valve.wire_area/pi);
     coil_cross_section_A = 0.5 * (valve.coil_dout - valve.coil_din) * valve.coil_h; % mm2;
-    N = coil_cross_section_A / wire_d^2;
+    N = coil_cross_section_A / wire_d^2; % TODO remove safety factor
     wire_len = N * pi * (valve.coil_dout + valve.coil_din) * 1e-3;
     wire_R = wire_len * R_per_km * 1e-3;
     sol_V = wire_R * current;
     sol_P = wire_R * current^2;
     flux = N * current / MR_total;
     Fmag = 0.5 * flux^2 / (air_perm * MR_gap_hor_A);
-    L = N * flux / current;
+    % L = N * flux / current;
+    L = N^2 / MR_total; % This derivation lets me compute inductance in terms of air gap, not current.
+    %figure
+    %plot([MR_valve_spool,MR_gap,MR_shell,MR_magnetic_bottom,MR_magnetic_top,...
+    %    MR_valve_spool_magnetic_bottom_hor,MR_shell_mag_bot_hor,MR_shell_mag_top_hor])
+    % valve_magnetic_force(dynamic.valve,0.023,1)
 end
