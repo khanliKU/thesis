@@ -1,7 +1,7 @@
 function [Fmag,N,wire_len,wire_R,sol_V,sol_P,L,MR_total] = valve_magnetic_force(valve,gap,current)
     air_perm = 1.25663753*1e-6;
     %Magnetic Top
-    magnetic_top_boss_center_cylnder_r = 0.25 * (valve.magnetic_top_boss_dout + valve.magnetic_top_boss_din);
+    magnetic_top_boss_center_cylnder_r = 0.5 * valve.magnetic_top_boss_dout;
     shell_center_cylinder_r = 0.25 * (valve.shell_dout + valve.shell_din);
     MR_volume_magnetic_top_hor_l = (shell_center_cylinder_r - magnetic_top_boss_center_cylnder_r) * 1e-3;
     MR_volume_magnetic_top_hor_A =...
@@ -12,7 +12,7 @@ function [Fmag,N,wire_len,wire_R,sol_V,sol_P,L,MR_total] = valve_magnetic_force(
     MR_volume_magnetic_top_ver_A_out = 0.25 * pi * (valve.magnetic_top_dout^2 - valve.shell_din^2) * 1e-6;
     MR_magnetic_top_ver_out = MR_volume_magnetic_top_ver_l_out / ( valve.perm * MR_volume_magnetic_top_ver_A_out ); % mm / (H/m mm^2) -> (m mm / H mm^2) -> 1e3 / H
     MR_volume_magnetic_top_ver_l_in = (MR_volume_magnetic_top_ver_l_out + valve.magnetic_top_boss_h) * 1e-3;
-    MR_volume_magnetic_top_ver_A_in = 0.25 * pi * (valve.magnetic_top_boss_dout^2 - valve.magnetic_top_boss_din^2) * 1e-6;
+    MR_volume_magnetic_top_ver_A_in = 0.25 * pi * valve.magnetic_top_boss_dout^2 * 1e-6;
     MR_magnetic_top_ver_in = MR_volume_magnetic_top_ver_l_in / ( valve.perm * MR_volume_magnetic_top_ver_A_in ) ;% mm / (H/m mm^2) -> (m mm / H mm^2) -> 1e3 / H
     MR_magnetic_top = (MR_magnetic_top_hor + MR_magnetic_top_ver_out + MR_magnetic_top_ver_in);
     %Magnetic Bottom
@@ -38,7 +38,7 @@ function [Fmag,N,wire_len,wire_R,sol_V,sol_P,L,MR_total] = valve_magnetic_force(
     MR_shell_mag_top_hor = 0; %MR_surface_shell_mag_top_hor_l / (valve.perm * MR_surface_shell_mag_top_hor_A)
     %Gap
     MR_gap_hor_l = gap * 1e-3;
-    MR_gap_hor_A = 0.25 * pi * (valve.valve_spool_d^2 - valve.magnetic_top_boss_din^2) * 1e-6;
+    MR_gap_hor_A = 0.25 * pi * valve.valve_spool_d^2 * 1e-6;
     MR_gap = MR_gap_hor_l / (air_perm * MR_gap_hor_A);
     %Valve Spool
     MR_surface_valve_spool_hor_l = 0.5 * (valve.valve_spool_d - valve.valve_spool_hole_d) * 1e-3;
