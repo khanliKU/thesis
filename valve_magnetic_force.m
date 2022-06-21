@@ -1,4 +1,4 @@
-function [Fmag,N,wire_len,wire_R,sol_V,sol_P,L,MR_total] = valve_magnetic_force(valve,gap,current)
+function [Fmag,N,wire_len,wire_R,sol_V,sol_P,L,MR_total] = valve_magnetic_force(valve,gap,current,relPlot)
     air_perm = 1.25663753*1e-6;
     %Magnetic Top
     magnetic_top_boss_center_cylnder_r = 0.5 * valve.magnetic_top_boss_dout;
@@ -51,7 +51,8 @@ function [Fmag,N,wire_len,wire_R,sol_V,sol_P,L,MR_total] = valve_magnetic_force(
     %Valve Spool - Magnetic Bottom valve.clearance
     MR_surface_valve_spool_magnetic_bottom_hor_l = 0.5 * valve.clearance * 1e-3;
     MR_surface_valve_spool_magnetic_bottom_hor_A = pi * 0.5 * (valve.magnetic_core_d + valve.magnetic_bottom_din) * valve.magnetic_bottom_h * 1e-6;
-    MR_valve_spool_magnetic_bottom_hor = MR_surface_valve_spool_magnetic_bottom_hor_l / (air_perm * MR_surface_valve_spool_magnetic_bottom_hor_A);
+    MR_valve_spool_magnetic_bottom_hor = MR_surface_valve_spool_magnetic_bottom_hor_l /...
+        (air_perm * MR_surface_valve_spool_magnetic_bottom_hor_A);
     %Total
     MR_total = MR_valve_spool + MR_gap + MR_shell + MR_magnetic_bottom + MR_magnetic_top +...
         MR_valve_spool_magnetic_bottom_hor + MR_shell_mag_bot_hor + MR_shell_mag_top_hor;
@@ -67,8 +68,12 @@ function [Fmag,N,wire_len,wire_R,sol_V,sol_P,L,MR_total] = valve_magnetic_force(
     Fmag = 0.5 * flux^2 / (air_perm * MR_gap_hor_A);
     % L = N * flux / current;
     L = N^2 / MR_total; % This derivation lets me compute inductance in terms of air gap, not current.
-    %figure
-    %plot([MR_valve_spool,MR_gap,MR_shell,MR_magnetic_bottom,MR_magnetic_top,...
-    %    MR_valve_spool_magnetic_bottom_hor,MR_shell_mag_bot_hor,MR_shell_mag_top_hor])
+    if(relPlot)
+        airGapMR_ratio = MR_gap/sum([MR_valve_spool,MR_shell,MR_magnetic_bottom,MR_magnetic_top,...
+                MR_valve_spool_magnetic_bottom_hor,MR_shell_mag_bot_hor,MR_shell_mag_top_hor])
+        figure
+        plot([MR_valve_spool,MR_gap,MR_shell,MR_magnetic_bottom,MR_magnetic_top,...
+            MR_valve_spool_magnetic_bottom_hor,MR_shell_mag_bot_hor,MR_shell_mag_top_hor])
+    end
     % valve_magnetic_force(dynamic.valve,0.023,1)
 end
