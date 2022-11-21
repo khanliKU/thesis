@@ -3,7 +3,7 @@ function [rP1,rT1,rM1,rP2,rT2,rM2,mdot] = gasExchange(P1,T1,M1,P2,T2,M2,gam,A,R,
     if P1 > P2
         mdot = checkImag(mdot_orifice(P1,P2,gam,A,T1,R));
 
-        delta_m = 0.5*(mdot+mdot_old) * dt;
+        delta_m = mdot * dt;
         
         if M1 == inf
             rT1 = T1;
@@ -23,7 +23,7 @@ function [rP1,rT1,rM1,rP2,rT2,rM2,mdot] = gasExchange(P1,T1,M1,P2,T2,M2,gam,A,R,
     elseif P2 > P1
         mdot = -checkImag(mdot_orifice(P2,P1,gam,A,T2,R));
 
-        delta_m = 0.5*(mdot+mdot_old) * dt;
+        delta_m = mdot * dt;
 
         if M1 == inf
             rT1 = T1;
