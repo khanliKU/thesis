@@ -13,9 +13,6 @@ function [P1, T1, m1] = tank_discharge_io_pv(T0,m0,P_md,v_md,md,R,vol,Cv)
 %   vol: volume of tank
 %   Cv: specific heat constant volume in kJ/kg.K
     m1 = m0 + sum(md);
-    if m1 < 0
-        a = 13;
-    end
     h = P_md .* v_md .* md;
     u0 = m0 * Cv * T0;
     u1 = u0 + sum(h);
