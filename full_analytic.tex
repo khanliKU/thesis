@@ -1,0 +1,707 @@
+% This LaTeX was auto-generated from MATLAB code.
+% To make changes, update the MATLAB code and export to LaTeX again.
+
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{epstopdf}
+\usepackage[table]{xcolor}
+\usepackage{matlab}
+
+\sloppy
+\epstopdfsetup{outdir=./}
+\graphicspath{ {./full_analytic_images/} }
+
+\begin{document}
+
+\begin{matlabcode}
+syms d1 d2 d4 d5 l1 l3 l4 mu mu0 CC PR lc
+%syms NI(d2,l4,CC,PC)
+d3 = d4 + 3E-3;
+Acoil = 0.5 * l4 * (d2 - d3)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+Acoil = 
+
+\hskip1em $\displaystyle -\frac{l_4 \,{\left(d_4 -d_2 +\frac{3}{1000}\right)}}{2}$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+var3 = double(subs(Acoil,[d2,d4,l4],[26E-3,8E-3,25E-3]))
+\end{matlabcode}
+\begin{matlaboutput}
+var3 = 1.8750e-04
+\end{matlaboutput}
+\begin{matlabcode}
+NI = Acoil * CC * PR
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+NI = 
+
+\hskip1em $\displaystyle -\frac{\textrm{CC}\,\textrm{PR}\,l_4 \,{\left(d_4 -d_2 +\frac{3}{1000}\right)}}{2}$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+var2 = double(subs(NI,[CC,PR,d2,d4,l4],[10E6,0.7,26E-3,8E-3,25E-3]))
+\end{matlabcode}
+\begin{matlaboutput}
+var2 = 1.3125e+03
+\end{matlaboutput}
+
+\begin{par}
+$$R_{vertial\_in} =\frac{l_a -l_c }{\mu \cdot S_2 }+\frac{l_c }{\mu_0 \cdot S_2 }$$
+\end{par}
+
+\begin{matlabcode}
+l2 = l4 + 6E-3
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+l2 = 
+
+\hskip1em $\displaystyle l_4 +\frac{3}{500}$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+la = 0.5 * (l1 + l3) + l2
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+la = 
+
+\hskip1em $\displaystyle \frac{l_1 }{2}+\frac{l_3 }{2}+l_4 +\frac{3}{500}$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+lb = 0.5 * (0.5 * (d1 + d2) - d5)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+lb = 
+
+\hskip1em $\displaystyle \frac{d_1 }{4}+\frac{d_2 }{4}-\frac{d_5 }{2}$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+S1 = 0.25 * (d1^2 - d2^2)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+S1 = 
+
+\hskip1em $\displaystyle \frac{{d_1 }^2 }{4}-\frac{{d_2 }^2 }{4}$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+S2 = 0.25 * pi * (d4^2 - d5^2)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+S2 = 
+
+\hskip1em $\displaystyle \frac{\pi \,{\left({d_4 }^2 -{d_5 }^2 \right)}}{4}$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+S3 = 0.5 * pi * l1 * lb
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+S3 = 
+
+\hskip1em $\displaystyle \frac{\pi \,l_1 \,{\left(\frac{d_1 }{4}+\frac{d_2 }{4}-\frac{d_5 }{2}\right)}}{2}$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+S4 = 0.5 * pi * l3 * lb
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+S4 = 
+
+\hskip1em $\displaystyle \frac{\pi \,l_3 \,{\left(\frac{d_1 }{4}+\frac{d_2 }{4}-\frac{d_5 }{2}\right)}}{2}$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+
+Rvert_in = (la - lc) / (mu*S2) + lc/(mu0*S2)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+Rvert\_in = 
+
+\hskip1em $\displaystyle \frac{4\,{\left(\frac{l_1 }{2}+\frac{l_3 }{2}+l_4 -\textrm{lc}+\frac{3}{500}\right)}}{\mu \,\pi \,{\left({d_4 }^2 -{d_5 }^2 \right)}}+\frac{4\,\textrm{lc}}{\mu_0 \,\pi \,{\left({d_4 }^2 -{d_5 }^2 \right)}}$
+\end{matlabsymbolicoutput}
+
+\begin{par}
+$$R_{vertial\_out} =\frac{l_a }{\mu \cdot S_1 }$$
+\end{par}
+
+\begin{matlabcode}
+Rvert_out = la / (mu*S1)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+Rvert\_out = 
+
+\hskip1em $\displaystyle \frac{\frac{l_1 }{2}+\frac{l_3 }{2}+l_4 +\frac{3}{500}}{\mu \,{\left(\frac{{d_1 }^2 }{4}-\frac{{d_2 }^2 }{4}\right)}}$
+\end{matlabsymbolicoutput}
+
+\begin{par}
+$$R_{horizontal\_top} =R_{horizontal\_bottom} =\frac{l_b }{\mu \cdot S_3 }$$
+\end{par}
+
+\begin{matlabcode}
+Rhor_top = lb / (mu*S3)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+Rhor\_top = 
+
+\hskip1em $\displaystyle \frac{2}{l_1 \,\mu \,\pi }$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+Rhor_bot = lb / (mu*S4)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+Rhor\_bot = 
+
+\hskip1em $\displaystyle \frac{2}{l_3 \,\mu \,\pi }$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+Rtotal = Rvert_in + Rvert_out + Rhor_top + Rhor_bot
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+Rtotal = 
+
+\hskip1em $\displaystyle \begin{array}{l}
+\frac{\frac{l_1 }{2}+\frac{l_3 }{2}+l_4 +\frac{3}{500}}{\mu \,{\left(\frac{{d_1 }^2 }{4}-\frac{{d_2 }^2 }{4}\right)}}+\frac{2}{l_1 \,\mu \,\pi }+\frac{2}{l_3 \,\mu \,\pi }+\frac{4\,{\left(\frac{l_1 }{2}+\frac{l_3 }{2}+l_4 -\textrm{lc}+\frac{3}{500}\right)}}{\mu \,\pi \,\sigma_1 }+\frac{4\,\textrm{lc}}{\mu_0 \,\pi \,\sigma_1 }\\
+\mathrm{}\\
+\textrm{where}\\
+\mathrm{}\\
+\;\;\sigma_1 ={d_4 }^2 -{d_5 }^2 
+\end{array}$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+phi = NI / Rtotal
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+phi = 
+
+\hskip1em $\displaystyle \begin{array}{l}
+-\frac{\textrm{CC}\,\textrm{PR}\,l_4 \,{\left(d_4 -d_2 +\frac{3}{1000}\right)}}{2\,{\left(\frac{\frac{l_1 }{2}+\frac{l_3 }{2}+l_4 +\frac{3}{500}}{\mu \,{\left(\frac{{d_1 }^2 }{4}-\frac{{d_2 }^2 }{4}\right)}}+\frac{2}{l_1 \,\mu \,\pi }+\frac{2}{l_3 \,\mu \,\pi }+\frac{4\,{\left(\frac{l_1 }{2}+\frac{l_3 }{2}+l_4 -\textrm{lc}+\frac{3}{500}\right)}}{\mu \,\pi \,\sigma_1 }+\frac{4\,\textrm{lc}}{\mu_0 \,\pi \,\sigma_1 }\right)}}\\
+\mathrm{}\\
+\textrm{where}\\
+\mathrm{}\\
+\;\;\sigma_1 ={d_4 }^2 -{d_5 }^2 
+\end{array}$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+var4 = double(subs(phi,[CC,PR,d1,d2,d4,d5,l1,l3,l4,lc,mu,mu0],[10E6,0.7,30E-3,26E-3,8E-3,0E-3,3E-3,3E-3,25E-3,0.5E-3,850*1.25663706212E-6,1.25663706212E-6]))
+\end{matlabcode}
+\begin{matlaboutput}
+var4 = 1.3808e-04
+\end{matlaboutput}
+\begin{matlabcode}
+Fmag = 0.5 * phi^2 / (mu0 * S2)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+Fmag = 
+
+\hskip1em $\displaystyle \begin{array}{l}
+\frac{{\textrm{CC}}^2 \,{\textrm{PR}}^2 \,{l_4 }^2 \,{{\left(d_4 -d_2 +\frac{3}{1000}\right)}}^2 }{2\,\mu_0 \,\pi \,\sigma_1 \,{{\left(\frac{\frac{l_1 }{2}+\frac{l_3 }{2}+l_4 +\frac{3}{500}}{\mu \,{\left(\frac{{d_1 }^2 }{4}-\frac{{d_2 }^2 }{4}\right)}}+\frac{2}{l_1 \,\mu \,\pi }+\frac{2}{l_3 \,\mu \,\pi }+\frac{4\,{\left(\frac{l_1 }{2}+\frac{l_3 }{2}+l_4 -\textrm{lc}+\frac{3}{500}\right)}}{\mu \,\pi \,\sigma_1 }+\frac{4\,\textrm{lc}}{\mu_0 \,\pi \,\sigma_1 }\right)}}^2 }\\
+\mathrm{}\\
+\textrm{where}\\
+\mathrm{}\\
+\;\;\sigma_1 ={d_4 }^2 -{d_5 }^2 
+\end{array}$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+double(subs(Fmag,[CC,PR,d1,d2,d4,d5,l1,l3,l4,lc,mu,mu0],[10E6,0.7,30E-3,26E-3,8E-3,0E-3,3E-3,3E-3,25E-3,0.5E-3,850*1.25663706212E-6,1.25663706212E-6]))
+\end{matlabcode}
+\begin{matlaboutput}
+ans = 150.9201
+\end{matlaboutput}
+\begin{matlabcode}
+double(subs(Fmag,[CC,PR,d1,d2,d4,d5,l1,l3,l4,lc,mu,mu0],[10E6,0.7,30E-3,26E-3,8E-3,4E-3,3E-3,3E-3,25E-3,0.5E-3,850*1.25663706212E-6,1.25663706212E-6]))
+\end{matlabcode}
+\begin{matlaboutput}
+ans = 119.1669
+\end{matlaboutput}
+\begin{matlabcode}
+
+phi_res = double(subs(phi,[CC,PR,d1,d2,d4,d5,l1,l3,l4,lc,mu,mu0],[10E6,0.7,30E-3,26E-3,8E-3,0E-3,3E-3,3E-3,25E-3,0.5E-3,850*1.25663706212E-6,1.25663706212E-6]))
+\end{matlabcode}
+\begin{matlaboutput}
+phi_res = 1.3808e-04
+\end{matlaboutput}
+\begin{matlabcode}
+S2_res = double(subs(S2,[d4,d5],[8E-3,0E-3]))
+\end{matlabcode}
+\begin{matlaboutput}
+S2_res = 5.0265e-05
+\end{matlaboutput}
+\begin{matlabcode}
+0.5*phi_res^2/(S2_res * 1.25663706212E-6)
+\end{matlabcode}
+\begin{matlaboutput}
+ans = 150.9201
+\end{matlaboutput}
+
+\begin{par}
+\begin{flushleft}
+dMu
+\end{flushleft}
+\end{par}
+
+\begin{matlabcode}
+dFmag_dmu = diff(Fmag,mu)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dFmag\_dmu = 
+
+\hskip1em $\displaystyle \begin{array}{l}
+\frac{{\textrm{CC}}^2 \,{\textrm{PR}}^2 \,{l_4 }^2 \,{{\left(d_4 -d_2 +\frac{3}{1000}\right)}}^2 \,{\left(\frac{\sigma_4 }{\mu^2 \,\sigma_3 }+\frac{2}{l_1 \,\mu^2 \,\pi }+\frac{2}{l_3 \,\mu^2 \,\pi }+\frac{\sigma_2 }{\mu^2 \,\pi \,\sigma_1 }\right)}}{\mu_0 \,\pi \,\sigma_1 \,{{\left(\frac{\sigma_4 }{\mu \,\sigma_3 }+\frac{2}{l_1 \,\mu \,\pi }+\frac{2}{l_3 \,\mu \,\pi }+\frac{\sigma_2 }{\mu \,\pi \,\sigma_1 }+\frac{4\,\textrm{lc}}{\mu_0 \,\pi \,\sigma_1 }\right)}}^3 }\\
+\mathrm{}\\
+\textrm{where}\\
+\mathrm{}\\
+\;\;\sigma_1 ={d_4 }^2 -{d_5 }^2 \\
+\mathrm{}\\
+\;\;\sigma_2 =4\,{\left(\frac{l_1 }{2}+\frac{l_3 }{2}+l_4 -\textrm{lc}+\frac{3}{500}\right)}\\
+\mathrm{}\\
+\;\;\sigma_3 =\frac{{d_1 }^2 }{4}-\frac{{d_2 }^2 }{4}\\
+\mathrm{}\\
+\;\;\sigma_4 =\frac{l_1 }{2}+\frac{l_3 }{2}+l_4 +\frac{3}{500}
+\end{array}$
+\end{matlabsymbolicoutput}
+
+\begin{par}
+\begin{flushleft}
+dLc
+\end{flushleft}
+\end{par}
+
+\begin{matlabcode}
+dFmag_dlc = diff(Fmag,lc)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dFmag\_dlc = 
+
+\hskip1em $\displaystyle \begin{array}{l}
+\frac{{\textrm{CC}}^2 \,{\textrm{PR}}^2 \,{l_4 }^2 \,{\left(\frac{4}{\mu \,\pi \,\sigma_1 }-\frac{4}{\mu_0 \,\pi \,\sigma_1 }\right)}\,{{\left(d_4 -d_2 +\frac{3}{1000}\right)}}^2 }{\mu_0 \,\pi \,\sigma_1 \,{{\left(\frac{\frac{l_1 }{2}+\frac{l_3 }{2}+l_4 +\frac{3}{500}}{\mu \,{\left(\frac{{d_1 }^2 }{4}-\frac{{d_2 }^2 }{4}\right)}}+\frac{2}{l_1 \,\mu \,\pi }+\frac{2}{l_3 \,\mu \,\pi }+\frac{4\,{\left(\frac{l_1 }{2}+\frac{l_3 }{2}+l_4 -\textrm{lc}+\frac{3}{500}\right)}}{\mu \,\pi \,\sigma_1 }+\frac{4\,\textrm{lc}}{\mu_0 \,\pi \,\sigma_1 }\right)}}^3 }\\
+\mathrm{}\\
+\textrm{where}\\
+\mathrm{}\\
+\;\;\sigma_1 ={d_4 }^2 -{d_5 }^2 
+\end{array}$
+\end{matlabsymbolicoutput}
+
+\begin{par}
+\begin{flushleft}
+dd1
+\end{flushleft}
+\end{par}
+
+\begin{matlabcode}
+dFmag_dd1 = diff(Fmag,d1)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dFmag\_dd1 = 
+
+\hskip1em $\displaystyle \begin{array}{l}
+\frac{{\textrm{CC}}^2 \,{\textrm{PR}}^2 \,d_1 \,{l_4 }^2 \,{{\left(d_4 -d_2 +\frac{3}{1000}\right)}}^2 \,\sigma_3 }{2\,\mu \,\mu_0 \,\pi \,\sigma_1 \,{\sigma_2 }^2 \,{{\left(\frac{\sigma_3 }{\mu \,\sigma_2 }+\frac{2}{l_1 \,\mu \,\pi }+\frac{2}{l_3 \,\mu \,\pi }+\frac{4\,{\left(\frac{l_1 }{2}+\frac{l_3 }{2}+l_4 -\textrm{lc}+\frac{3}{500}\right)}}{\mu \,\pi \,\sigma_1 }+\frac{4\,\textrm{lc}}{\mu_0 \,\pi \,\sigma_1 }\right)}}^3 }\\
+\mathrm{}\\
+\textrm{where}\\
+\mathrm{}\\
+\;\;\sigma_1 ={d_4 }^2 -{d_5 }^2 \\
+\mathrm{}\\
+\;\;\sigma_2 =\frac{{d_1 }^2 }{4}-\frac{{d_2 }^2 }{4}\\
+\mathrm{}\\
+\;\;\sigma_3 =\frac{l_1 }{2}+\frac{l_3 }{2}+l_4 +\frac{3}{500}
+\end{array}$
+\end{matlabsymbolicoutput}
+
+\begin{par}
+\begin{flushleft}
+dd2
+\end{flushleft}
+\end{par}
+
+\begin{matlabcode}
+dFmag_dd2 = diff(Fmag,2)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dFmag\_dd2 = 
+
+\hskip1em $\displaystyle \begin{array}{l}
+\frac{3\,{\textrm{CC}}^2 \,{\textrm{PR}}^2 \,{l_4 }^2 \,\sigma_1 \,{{\left(\frac{\sigma_5 }{\mu^2 \,\sigma_4 }+\frac{2}{l_1 \,\mu^2 \,\pi }+\frac{2}{l_3 \,\mu^2 \,\pi }+\frac{4\,\sigma_6 }{\mu^2 \,\pi \,\sigma_3 }\right)}}^2 }{\mu_0 \,\pi \,\sigma_3 \,{\sigma_2 }^4 }-\frac{{\textrm{CC}}^2 \,{\textrm{PR}}^2 \,{l_4 }^2 \,\sigma_1 \,{\left(\frac{2\,\sigma_5 }{\mu^3 \,\sigma_4 }+\frac{4}{l_1 \,\mu^3 \,\pi }+\frac{4}{l_3 \,\mu^3 \,\pi }+\frac{8\,\sigma_6 }{\mu^3 \,\pi \,\sigma_3 }\right)}}{\mu_0 \,\pi \,\sigma_3 \,{\sigma_2 }^3 }\\
+\mathrm{}\\
+\textrm{where}\\
+\mathrm{}\\
+\;\;\sigma_1 ={{\left(d_4 -d_2 +\frac{3}{1000}\right)}}^2 \\
+\mathrm{}\\
+\;\;\sigma_2 =\frac{\sigma_5 }{\mu \,\sigma_4 }+\frac{2}{l_1 \,\mu \,\pi }+\frac{2}{l_3 \,\mu \,\pi }+\frac{4\,\sigma_6 }{\mu \,\pi \,\sigma_3 }+\frac{4\,\textrm{lc}}{\mu_0 \,\pi \,\sigma_3 }\\
+\mathrm{}\\
+\;\;\sigma_3 ={d_4 }^2 -{d_5 }^2 \\
+\mathrm{}\\
+\;\;\sigma_4 =\frac{{d_1 }^2 }{4}-\frac{{d_2 }^2 }{4}\\
+\mathrm{}\\
+\;\;\sigma_5 =\frac{l_1 }{2}+\frac{l_3 }{2}+l_4 +\frac{3}{500}\\
+\mathrm{}\\
+\;\;\sigma_6 =\frac{l_1 }{2}+\frac{l_3 }{2}+l_4 -\textrm{lc}+\frac{3}{500}
+\end{array}$
+\end{matlabsymbolicoutput}
+
+\begin{par}
+\begin{flushleft}
+dd4
+\end{flushleft}
+\end{par}
+
+\begin{matlabcode}
+dFmag_dd4 = diff(Fmag,d4)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dFmag\_dd4 = 
+
+\hskip1em $\displaystyle \begin{array}{l}
+\frac{{\textrm{CC}}^2 \,{\textrm{PR}}^2 \,{l_4 }^2 \,{\left(2\,d_4 -2\,d_2 +\frac{3}{500}\right)}}{2\,\mu_0 \,\pi \,\sigma_3 \,{\sigma_2 }^2 }-\frac{{\textrm{CC}}^2 \,{\textrm{PR}}^2 \,d_4 \,{l_4 }^2 \,\sigma_1 }{\mu_0 \,\pi \,{\sigma_3 }^2 \,{\sigma_2 }^2 }+\frac{{\textrm{CC}}^2 \,{\textrm{PR}}^2 \,{l_4 }^2 \,{\left(\frac{8\,d_4 \,\sigma_4 }{\mu \,\pi \,{\sigma_3 }^2 }+\frac{8\,d_4 \,\textrm{lc}}{\mu_0 \,\pi \,{\sigma_3 }^2 }\right)}\,\sigma_1 }{\mu_0 \,\pi \,\sigma_3 \,{\sigma_2 }^3 }\\
+\mathrm{}\\
+\textrm{where}\\
+\mathrm{}\\
+\;\;\sigma_1 ={{\left(d_4 -d_2 +\frac{3}{1000}\right)}}^2 \\
+\mathrm{}\\
+\;\;\sigma_2 =\frac{\frac{l_1 }{2}+\frac{l_3 }{2}+l_4 +\frac{3}{500}}{\mu \,{\left(\frac{{d_1 }^2 }{4}-\frac{{d_2 }^2 }{4}\right)}}+\frac{2}{l_1 \,\mu \,\pi }+\frac{2}{l_3 \,\mu \,\pi }+\frac{4\,\sigma_4 }{\mu \,\pi \,\sigma_3 }+\frac{4\,\textrm{lc}}{\mu_0 \,\pi \,\sigma_3 }\\
+\mathrm{}\\
+\;\;\sigma_3 ={d_4 }^2 -{d_5 }^2 \\
+\mathrm{}\\
+\;\;\sigma_4 =\frac{l_1 }{2}+\frac{l_3 }{2}+l_4 -\textrm{lc}+\frac{3}{500}
+\end{array}$
+\end{matlabsymbolicoutput}
+
+\begin{par}
+\begin{flushleft}
+dd5
+\end{flushleft}
+\end{par}
+
+\begin{matlabcode}
+dFmag_dd5 = diff(Fmag,d5)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dFmag\_dd5 = 
+
+\hskip1em $\displaystyle \begin{array}{l}
+\frac{{\textrm{CC}}^2 \,{\textrm{PR}}^2 \,d_5 \,{l_4 }^2 \,\sigma_1 }{\mu_0 \,\pi \,{\sigma_3 }^2 \,{\sigma_2 }^2 }-\frac{{\textrm{CC}}^2 \,{\textrm{PR}}^2 \,{l_4 }^2 \,{\left(\frac{8\,d_5 \,\sigma_4 }{\mu \,\pi \,{\sigma_3 }^2 }+\frac{8\,d_5 \,\textrm{lc}}{\mu_0 \,\pi \,{\sigma_3 }^2 }\right)}\,\sigma_1 }{\mu_0 \,\pi \,\sigma_3 \,{\sigma_2 }^3 }\\
+\mathrm{}\\
+\textrm{where}\\
+\mathrm{}\\
+\;\;\sigma_1 ={{\left(d_4 -d_2 +\frac{3}{1000}\right)}}^2 \\
+\mathrm{}\\
+\;\;\sigma_2 =\frac{\frac{l_1 }{2}+\frac{l_3 }{2}+l_4 +\frac{3}{500}}{\mu \,{\left(\frac{{d_1 }^2 }{4}-\frac{{d_2 }^2 }{4}\right)}}+\frac{2}{l_1 \,\mu \,\pi }+\frac{2}{l_3 \,\mu \,\pi }+\frac{4\,\sigma_4 }{\mu \,\pi \,\sigma_3 }+\frac{4\,\textrm{lc}}{\mu_0 \,\pi \,\sigma_3 }\\
+\mathrm{}\\
+\;\;\sigma_3 ={d_4 }^2 -{d_5 }^2 \\
+\mathrm{}\\
+\;\;\sigma_4 =\frac{l_1 }{2}+\frac{l_3 }{2}+l_4 -\textrm{lc}+\frac{3}{500}
+\end{array}$
+\end{matlabsymbolicoutput}
+
+\begin{par}
+\begin{flushleft}
+dl1
+\end{flushleft}
+\end{par}
+
+\begin{matlabcode}
+dFmag_dl1 = diff(Fmag,l1)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dFmag\_dl1 = 
+
+\hskip1em $\displaystyle \begin{array}{l}
+-\frac{{\textrm{CC}}^2 \,{\textrm{PR}}^2 \,{l_4 }^2 \,{{\left(d_4 -d_2 +\frac{3}{1000}\right)}}^2 \,{\left(\frac{1}{2\,\mu \,\sigma_2 }+\frac{2}{\mu \,\pi \,\sigma_1 }-\frac{2}{{l_1 }^2 \,\mu \,\pi }\right)}}{\mu_0 \,\pi \,\sigma_1 \,{{\left(\frac{\frac{l_1 }{2}+\frac{l_3 }{2}+l_4 +\frac{3}{500}}{\mu \,\sigma_2 }+\frac{2}{l_1 \,\mu \,\pi }+\frac{2}{l_3 \,\mu \,\pi }+\frac{4\,{\left(\frac{l_1 }{2}+\frac{l_3 }{2}+l_4 -\textrm{lc}+\frac{3}{500}\right)}}{\mu \,\pi \,\sigma_1 }+\frac{4\,\textrm{lc}}{\mu_0 \,\pi \,\sigma_1 }\right)}}^3 }\\
+\mathrm{}\\
+\textrm{where}\\
+\mathrm{}\\
+\;\;\sigma_1 ={d_4 }^2 -{d_5 }^2 \\
+\mathrm{}\\
+\;\;\sigma_2 =\frac{{d_1 }^2 }{4}-\frac{{d_2 }^2 }{4}
+\end{array}$
+\end{matlabsymbolicoutput}
+
+\begin{par}
+\begin{flushleft}
+dl3
+\end{flushleft}
+\end{par}
+
+\begin{matlabcode}
+dFmag_dl3 = diff(Fmag,l3)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dFmag\_dl3 = 
+
+\hskip1em $\displaystyle \begin{array}{l}
+-\frac{{\textrm{CC}}^2 \,{\textrm{PR}}^2 \,{l_4 }^2 \,{{\left(d_4 -d_2 +\frac{3}{1000}\right)}}^2 \,{\left(\frac{1}{2\,\mu \,\sigma_2 }+\frac{2}{\mu \,\pi \,\sigma_1 }-\frac{2}{{l_3 }^2 \,\mu \,\pi }\right)}}{\mu_0 \,\pi \,\sigma_1 \,{{\left(\frac{\frac{l_1 }{2}+\frac{l_3 }{2}+l_4 +\frac{3}{500}}{\mu \,\sigma_2 }+\frac{2}{l_1 \,\mu \,\pi }+\frac{2}{l_3 \,\mu \,\pi }+\frac{4\,{\left(\frac{l_1 }{2}+\frac{l_3 }{2}+l_4 -\textrm{lc}+\frac{3}{500}\right)}}{\mu \,\pi \,\sigma_1 }+\frac{4\,\textrm{lc}}{\mu_0 \,\pi \,\sigma_1 }\right)}}^3 }\\
+\mathrm{}\\
+\textrm{where}\\
+\mathrm{}\\
+\;\;\sigma_1 ={d_4 }^2 -{d_5 }^2 \\
+\mathrm{}\\
+\;\;\sigma_2 =\frac{{d_1 }^2 }{4}-\frac{{d_2 }^2 }{4}
+\end{array}$
+\end{matlabsymbolicoutput}
+
+\begin{par}
+\begin{flushleft}
+dl4
+\end{flushleft}
+\end{par}
+
+\begin{matlabcode}
+dFmag_dl4 = diff(Fmag,l4)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dFmag\_dl4 = 
+
+\hskip1em $\displaystyle \begin{array}{l}
+\frac{{\textrm{CC}}^2 \,{\textrm{PR}}^2 \,l_4 \,{{\left(d_4 -d_2 +\frac{3}{1000}\right)}}^2 }{\mu_0 \,\pi \,\sigma_2 \,{\sigma_1 }^2 }-\frac{{\textrm{CC}}^2 \,{\textrm{PR}}^2 \,{l_4 }^2 \,{\left(\frac{1}{\mu \,{\left(\frac{{d_1 }^2 }{4}-\frac{{d_2 }^2 }{4}\right)}}+\frac{4}{\mu \,\pi \,\sigma_2 }\right)}\,{{\left(d_4 -d_2 +\frac{3}{1000}\right)}}^2 }{\mu_0 \,\pi \,\sigma_2 \,{\sigma_1 }^3 }\\
+\mathrm{}\\
+\textrm{where}\\
+\mathrm{}\\
+\;\;\sigma_1 =\frac{\frac{l_1 }{2}+\frac{l_3 }{2}+l_4 +\frac{3}{500}}{\mu \,{\left(\frac{{d_1 }^2 }{4}-\frac{{d_2 }^2 }{4}\right)}}+\frac{2}{l_1 \,\mu \,\pi }+\frac{2}{l_3 \,\mu \,\pi }+\frac{4\,{\left(\frac{l_1 }{2}+\frac{l_3 }{2}+l_4 -\textrm{lc}+\frac{3}{500}\right)}}{\mu \,\pi \,\sigma_2 }+\frac{4\,\textrm{lc}}{\mu_0 \,\pi \,\sigma_2 }\\
+\mathrm{}\\
+\;\;\sigma_2 ={d_4 }^2 -{d_5 }^2 
+\end{array}$
+\end{matlabsymbolicoutput}
+
+\begin{par}
+\begin{flushleft}
+dCC
+\end{flushleft}
+\end{par}
+
+\begin{matlabcode}
+dFmag_dCC = diff(Fmag,CC)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dFmag\_dCC = 
+
+\hskip1em $\displaystyle \begin{array}{l}
+\frac{\textrm{CC}\,{\textrm{PR}}^2 \,{l_4 }^2 \,{{\left(d_4 -d_2 +\frac{3}{1000}\right)}}^2 }{\mu_0 \,\pi \,\sigma_1 \,{{\left(\frac{\frac{l_1 }{2}+\frac{l_3 }{2}+l_4 +\frac{3}{500}}{\mu \,{\left(\frac{{d_1 }^2 }{4}-\frac{{d_2 }^2 }{4}\right)}}+\frac{2}{l_1 \,\mu \,\pi }+\frac{2}{l_3 \,\mu \,\pi }+\frac{4\,{\left(\frac{l_1 }{2}+\frac{l_3 }{2}+l_4 -\textrm{lc}+\frac{3}{500}\right)}}{\mu \,\pi \,\sigma_1 }+\frac{4\,\textrm{lc}}{\mu_0 \,\pi \,\sigma_1 }\right)}}^2 }\\
+\mathrm{}\\
+\textrm{where}\\
+\mathrm{}\\
+\;\;\sigma_1 ={d_4 }^2 -{d_5 }^2 
+\end{array}$
+\end{matlabsymbolicoutput}
+
+\begin{par}
+\begin{flushleft}
+dPR
+\end{flushleft}
+\end{par}
+
+\begin{matlabcode}
+dFmag_dPR = diff(Fmag,PR)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dFmag\_dPR = 
+
+\hskip1em $\displaystyle \begin{array}{l}
+\frac{{\textrm{CC}}^2 \,\textrm{PR}\,{l_4 }^2 \,{{\left(d_4 -d_2 +\frac{3}{1000}\right)}}^2 }{\mu_0 \,\pi \,\sigma_1 \,{{\left(\frac{\frac{l_1 }{2}+\frac{l_3 }{2}+l_4 +\frac{3}{500}}{\mu \,{\left(\frac{{d_1 }^2 }{4}-\frac{{d_2 }^2 }{4}\right)}}+\frac{2}{l_1 \,\mu \,\pi }+\frac{2}{l_3 \,\mu \,\pi }+\frac{4\,{\left(\frac{l_1 }{2}+\frac{l_3 }{2}+l_4 -\textrm{lc}+\frac{3}{500}\right)}}{\mu \,\pi \,\sigma_1 }+\frac{4\,\textrm{lc}}{\mu_0 \,\pi \,\sigma_1 }\right)}}^2 }\\
+\mathrm{}\\
+\textrm{where}\\
+\mathrm{}\\
+\;\;\sigma_1 ={d_4 }^2 -{d_5 }^2 
+\end{array}$
+\end{matlabsymbolicoutput}
+
+
+\begin{matlabcode}
+density6061 = 2700;
+density430F = 7800;
+densityCopper = 8960;
+W_copper = PR * 0.25 * l4 * (d2^2 - d3^2) * densityCopper
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+W\_copper = 
+
+\hskip1em $\displaystyle -2240\,\textrm{PR}\,l_4 \,{\left({{\left(d_4 +\frac{3}{1000}\right)}}^2 -{d_2 }^2 \right)}$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+double(subs(W_copper,[PR,d2,d4,l4],[0.7,27E-3,8E-3,25E-3]))
+\end{matlabcode}
+\begin{matlaboutput}
+ans = 0.0238
+\end{matlaboutput}
+\begin{matlabcode}
+W_coilformer = 0.25 * (d2^2 * (l2 - l4) + d3^2 * l4 - d4^2 * l2) * density6061
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+W\_coilformer = 
+
+\hskip1em $\displaystyle \frac{81\,{d_2 }^2 }{20}-675\,{d_4 }^2 \,{\left(l_4 +\frac{3}{500}\right)}+675\,l_4 \,{{\left(d_4 +\frac{3}{1000}\right)}}^2 $
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+W_shell = 0.25 * (d1^2 - d2^2) * l2 * density430F
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+W\_shell = 
+
+\hskip1em $\displaystyle 7800\,{\left(\frac{{d_1 }^2 }{4}-\frac{{d_2 }^2 }{4}\right)}\,{\left(l_4 +\frac{3}{500}\right)}$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+W_magtop = 0.25 * ((d1^2 - d5^2) * l1 + (d4^2 - d5^2) * l2 * 0.5) * density430F
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+W\_magtop = 
+
+\hskip1em $\displaystyle 1950\,l_1 \,{\left({d_1 }^2 -{d_5 }^2 \right)}+975\,{\left({d_4 }^2 -{d_5 }^2 \right)}\,{\left(l_4 +\frac{3}{500}\right)}$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+W_magbot = 0.25 * (d1^2 - d5^2) * l3 * density430F
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+W\_magbot = 
+
+\hskip1em $\displaystyle 7800\,l_3 \,{\left(\frac{{d_1 }^2 }{4}-\frac{{d_5 }^2 }{4}\right)}$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+W_magpintle = 0.25 * (d4^2 - d5^2) * l2 * 0.5 * density430F
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+W\_magpintle = 
+
+\hskip1em $\displaystyle 3900\,{\left(\frac{{d_4 }^2 }{4}-\frac{{d_5 }^2 }{4}\right)}\,{\left(l_4 +\frac{3}{500}\right)}$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+Weight = W_copper + W_coilformer + W_shell + W_magtop + W_magbot + W_magpintle
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+Weight = 
+
+\hskip1em $\displaystyle \begin{array}{l}
+1950\,l_1 \,{\left({d_1 }^2 -{d_5 }^2 \right)}+7800\,l_3 \,{\left(\frac{{d_1 }^2 }{4}-\frac{{d_5 }^2 }{4}\right)}+975\,{\left({d_4 }^2 -{d_5 }^2 \right)}\,{\left(l_4 +\frac{3}{500}\right)}+\frac{81\,{d_2 }^2 }{20}+7800\,{\left(\frac{{d_1 }^2 }{4}-\frac{{d_2 }^2 }{4}\right)}\,{\left(l_4 +\frac{3}{500}\right)}+3900\,{\left(\frac{{d_4 }^2 }{4}-\frac{{d_5 }^2 }{4}\right)}\,{\left(l_4 +\frac{3}{500}\right)}-675\,{d_4 }^2 \,{\left(l_4 +\frac{3}{500}\right)}+675\,l_4 \,\sigma_1 -2240\,\textrm{PR}\,l_4 \,{\left(\sigma_1 -{d_2 }^2 \right)}\\
+\mathrm{}\\
+\textrm{where}\\
+\mathrm{}\\
+\;\;\sigma_1 ={{\left(d_4 +\frac{3}{1000}\right)}}^2 
+\end{array}$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+double(subs(Weight,[PR,d1,d2,d4,d5,l1,l3,l4],[0.8,30E-3,27E-3,8E-3,0E-3,3E-3,3E-3,25E-3]))
+\end{matlabcode}
+\begin{matlaboutput}
+ans = 0.0556
+\end{matlaboutput}
+
+\begin{par}
+\begin{flushleft}
+dPR
+\end{flushleft}
+\end{par}
+
+\begin{matlabcode}
+dWeight_dcop = diff(Weight,PR)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dWeight\_dcop = 
+
+\hskip1em $\displaystyle -2240\,l_4 \,{\left({{\left(d_4 +\frac{3}{1000}\right)}}^2 -{d_2 }^2 \right)}$
+\end{matlabsymbolicoutput}
+
+\begin{par}
+\begin{flushleft}
+dd1
+\end{flushleft}
+\end{par}
+
+\begin{matlabcode}
+dWeight_dd1 = diff(Weight,d1)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dWeight\_dd1 = 
+
+\hskip1em $\displaystyle 3900\,d_1 \,l_1 +3900\,d_1 \,l_3 +3900\,d_1 \,{\left(l_4 +\frac{3}{500}\right)}$
+\end{matlabsymbolicoutput}
+
+\begin{par}
+\begin{flushleft}
+dd2
+\end{flushleft}
+\end{par}
+
+\begin{matlabcode}
+dWeight_dd2 = diff(Weight,d2)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dWeight\_dd2 = 
+
+\hskip1em $\displaystyle \frac{81\,d_2 }{10}-3900\,d_2 \,{\left(l_4 +\frac{3}{500}\right)}+4480\,\textrm{PR}\,d_2 \,l_4 $
+\end{matlabsymbolicoutput}
+
+\begin{par}
+\begin{flushleft}
+dd4
+\end{flushleft}
+\end{par}
+
+\begin{matlabcode}
+dWeight_dd4 = diff(Weight,d4)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dWeight\_dd4 = 
+
+\hskip1em $\displaystyle 2550\,d_4 \,{\left(l_4 +\frac{3}{500}\right)}+675\,l_4 \,{\left(2\,d_4 +\frac{3}{500}\right)}-2240\,\textrm{PR}\,l_4 \,{\left(2\,d_4 +\frac{3}{500}\right)}$
+\end{matlabsymbolicoutput}
+
+\begin{par}
+\begin{flushleft}
+dd5
+\end{flushleft}
+\end{par}
+
+\begin{matlabcode}
+dWeight_dd1 = diff(Weight,d5)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dWeight\_dd1 = 
+
+\hskip1em $\displaystyle -3900\,d_5 \,l_1 -3900\,d_5 \,l_3 -3900\,d_5 \,{\left(l_4 +\frac{3}{500}\right)}$
+\end{matlabsymbolicoutput}
+
+\begin{par}
+\begin{flushleft}
+dl1
+\end{flushleft}
+\end{par}
+
+\begin{matlabcode}
+dWeight_dl1 = diff(Weight,l1)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dWeight\_dl1 = 
+
+\hskip1em $\displaystyle 1950\,{d_1 }^2 -1950\,{d_5 }^2 $
+\end{matlabsymbolicoutput}
+
+\begin{par}
+\begin{flushleft}
+dl3
+\end{flushleft}
+\end{par}
+
+\begin{matlabcode}
+dWeight_dl3 = diff(Weight,l3)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dWeight\_dl3 = 
+
+\hskip1em $\displaystyle 1950\,{d_1 }^2 -1950\,{d_5 }^2 $
+\end{matlabsymbolicoutput}
+
+\begin{par}
+\begin{flushleft}
+dl4
+\end{flushleft}
+\end{par}
+
+\begin{matlabcode}
+dWeight_dl4 = diff(Weight,l4)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+dWeight\_dl4 = 
+
+\hskip1em $\displaystyle 675\,{{\left(d_4 +\frac{3}{1000}\right)}}^2 -2240\,\textrm{PR}\,{\left({{\left(d_4 +\frac{3}{1000}\right)}}^2 -{d_2 }^2 \right)}+1950\,{d_1 }^2 -1950\,{d_2 }^2 +1275\,{d_4 }^2 -1950\,{d_5 }^2 $
+\end{matlabsymbolicoutput}
+
+\end{document}
